@@ -6,4 +6,4 @@ A. Pal, C. Nieto-Granda, and H. I. Christensen, “**DEDUCE: Diverse scEne Detec
 
 ## Prerequisite
 
-1. The code has been implemented and tested on Ubuntu 16.04, python 2.7, PyTorch 0.4.0/1.1.0 (tested on NVIDIA Titan Xp with CUDA 9.0 and GeForce RTX 2080Ti with CUDA 10.0)
+1. The code has been implemented and tested on Ubuntu 16.04, python 2.7, PyTorch 0.4/1.1 (tested on NVIDIA Titan Xp with CUDA 9.0 and GeForce RTX 2080Ti with CUDA 10.0)
