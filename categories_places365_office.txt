@@ -1,0 +1,5 @@
+/c/conference_room 0
+/c/corridor 1
+/k/kitchen 2
+/l/living_room 3
+/o/office 4
