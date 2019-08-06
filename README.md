@@ -12,7 +12,7 @@ A. Pal, C. Nieto-Granda, and H. I. Christensen, “**DEDUCE: Diverse scEne Detec
 
 ## Data
 
-1. Places365: The official train/test splits can be found here. Please download and save it locally.
+1. Places365: The official train/test splits can be found [here](http://data.csail.mit.edu/places/places365/places365standard_easyformat.tar). Please download and save it locally.
 2. SUNRGBD: The data can be found [here](http://rgbd.cs.princeton.edu/data/SUNRGBD.zip). Please download and save it locally.
 3. VPC: The 6 different home environments can be found [here](http://categorizingplaces.com/dataset.html). Please download and save it locally.
 
@@ -20,8 +20,24 @@ Update the locations accordingly in the config file.
 
 ## Training
 
-For the Places and SUN dataset, please structure the data as `/path_to_data/dataset/train/scene_type/*.jpg`. For VPC dataset, please structure as `/path_to_data/dataset/train/scene_type/*.jpg`
+As per the environment type, please structure the Places365 dataset as `/path_to_data/Places365/env_type/train/scene_type/*.jpg`.
+
+For the Scene_only model, please run
+```
+    python train_deduce_scene_home.py -a resnet18 -b=10 -j=4 -p=1000
+```
+
+For the Scene_attn model, please run
+```
+    python train_deduce_scene_attn.py -a wideresnet -b=10 -j=4 -p=1000
+```
+
+For the Combined model, please run
+```
+    python train_deduce_combined.py -a resnet18 -b=10 -j=4 -p=10
+```
 
 ## Evaluation on image datasets
-
+ For the Places and SUN dataset, please structure the data as `/path_to_data/dataset/train/scene_type/*.jpg`. For VPC dataset, please structure as `/path_to_data/dataset/train/scene_type/*.jpg`
+ 
 1. Download the data for the 
