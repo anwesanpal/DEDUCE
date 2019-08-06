@@ -28,10 +28,7 @@ args = parser.parse_args()
 arch = 'resnet18'
 
 # load the pre-trained weights
-model_file = 'models/%s_best.pth.tar' % arch
-# if not os.access(model_file, os.W_OK):
-#     weight_url = 'http://places2.csail.mit.edu/models_places365/' + model_file
-#     os.system('wget ' + weight_url)
+model_file = 'models/{}_best_{}.pth.tar'.format(arch,args.envtype)
 
 model = models.__dict__[arch](num_classes=7)
 checkpoint = torch.load(model_file, map_location=lambda storage, loc: storage)
@@ -50,9 +47,7 @@ centre_crop = trn.Compose([
 
 # load the class label
 file_name = 'categories_places365_{}.txt'.format(args.envtype)
-# if not os.access(file_name, os.W_OK):
-#     synset_url = 'https://raw.githubusercontent.com/csailvision/places365/master/categories_places365.txt'
-#     os.system('wget ' + synset_url)
+
 classes = list()
 with open(file_name) as class_file:
     for line in class_file:

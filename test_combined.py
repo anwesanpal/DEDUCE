@@ -35,11 +35,7 @@ args = parser.parse_args()
 arch = 'resnet18'
 
 # load the pre-trained weights
-model_file = 'models/%s_best_slam.pth.tar' % arch
-
-# if not os.access(model_file, os.W_OK):
-#     weight_url = 'http://places2.csail.mit.edu/models_places365/' + model_file
-#     os.system('wget ' + weight_url)
+model_file = 'models/%s_best_combined.pth.tar' % arch
 
 class Object_Linear(nn.Module):
     def __init__(self):

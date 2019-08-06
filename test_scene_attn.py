@@ -28,9 +28,7 @@ def load_labels():
     # prepare all the labels
     # scene category relevant
     file_name_category = 'categories_places365_{}.txt'.format(args.envtype)
-    # if not os.access(file_name_category, os.W_OK):
-    #     synset_url = 'https://raw.githubusercontent.com/csailvision/places365/master/categories_places365.txt'
-    #     os.system('wget ' + synset_url)
+
     classes = list()
     with open(file_name_category) as class_file:
         for line in class_file:
@@ -52,16 +50,16 @@ def load_labels():
 
     # scene attribute relevant
     file_name_attribute = 'labels_sunattribute.txt'
-    if not os.access(file_name_attribute, os.W_OK):
-        synset_url = 'https://raw.githubusercontent.com/csailvision/places365/master/labels_sunattribute.txt'
-        os.system('wget ' + synset_url)
+    # if not os.access(file_name_attribute, os.W_OK):
+    #     synset_url = 'https://raw.githubusercontent.com/csailvision/places365/master/labels_sunattribute.txt'
+    #     os.system('wget ' + synset_url)
     with open(file_name_attribute) as f:
         lines = f.readlines()
         labels_attribute = [item.rstrip() for item in lines]
     file_name_W = 'W_sceneattribute_wideresnet18.npy'
-    if not os.access(file_name_W, os.W_OK):
-        synset_url = 'http://places2.csail.mit.edu/models_places365/W_sceneattribute_wideresnet18.npy'
-        os.system('wget ' + synset_url)
+    # if not os.access(file_name_W, os.W_OK):
+    #     synset_url = 'http://places2.csail.mit.edu/models_places365/W_sceneattribute_wideresnet18.npy'
+    #     os.system('wget ' + synset_url)
     W_attribute = np.load(file_name_W)
 
     return classes, labels_IO, labels_attribute, W_attribute
@@ -112,10 +110,7 @@ for class_name in os.listdir(valdir):
         def load_model():
             # this model has a last conv feature map as 14x14
 
-            model_file = 'models/wideresnet_best.pth.tar'
-            # if not os.access(model_file, os.W_OK):
-            #     os.system('wget http://places2.csail.mit.edu/models_places365/' + model_file)
-            #     os.system('wget https://raw.githubusercontent.com/csailvision/places365/master/wideresnet.py')
+            model_file = 'models/wideresnet_best_attn.pth.tar'
 
             import wideresnet
             model = wideresnet.resnet18(num_classes=7)
