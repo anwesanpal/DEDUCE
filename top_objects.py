@@ -14,7 +14,7 @@ from yolov3.detect import detect
 from collections import defaultdict
 from config import places_dir, sun_dir
 
-parser = argparse.ArgumentParser(description='PyTorch Places365 SLAM Evaluation')
+parser = argparse.ArgumentParser(description='Find top 10 objects for every scene')
 parser.add_argument('--cfg',default='yolov3/cfg/yolo_v3.cfg',help='config file for yolo')
 parser.add_argument('--weight',default='yolov3/yolov3.weights',help='weight file for yolo')
 parser.add_argument('--namesfile',default='yolov3/data/coco.names',help='name file for yolo')
