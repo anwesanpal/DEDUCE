@@ -3,7 +3,9 @@
 # Prediction on real world videos
 #
 # by Anwesan Pal
-
+import sys
+sys.path.append('/home/anwesan/Research/DEDUCE/yolov3')
+print (repr(sys.path))
 import argparse
 import numpy as np
 import torch
@@ -37,7 +39,7 @@ args = parser.parse_args()
 arch = 'resnet18'
 
 # load the pre-trained weights
-model_file = 'models/%s_best.pth.tar' % arch
+model_file = 'models/%s_best_home.pth.tar' % arch
 # if not os.access(model_file, os.W_OK):
 #     weight_url = 'http://places2.csail.mit.edu/models_places365/' + model_file
 #     os.system('wget ' + weight_url)
@@ -117,8 +119,8 @@ while success:
         objects, class_names = detect_vid(args.cfg, args.weight, im_pil,args.namesfile)
         count = 0
         for i in range(len(cookbook)):
-            if(bool(set(objects).intersection(cookbook.values()[i])) and (cookbook.keys()[i] in [classes[idx[0]],classes[idx[1]],classes[idx[2]]])):
-                text = cookbook.keys()[i]
+            if(bool(set(objects).intersection(list(cookbook.values())[i])) and (list(cookbook.keys())[i] in [classes[idx[0]],classes[idx[1]],classes[idx[2]]])):
+                text = list(cookbook.keys())[i]
                 count+=1
         if(count != 1):
             text = ''
